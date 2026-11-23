@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huskly Compute — Dedicated 4× NVIDIA RTX PRO 6000 Max-Q (384 GB VRAM)</title>
+  <meta name="description" content="Dedicated bare-metal 4x NVIDIA RTX PRO 6000 Blackwell Max-Q server (384 GB ECC VRAM, Threadripper PRO 7965WX, 512 GB DDR5) available for monthly lease in Seattle, WA." />
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --surface: #12161c;
+      --border: #222833;
+      --text: #e6ebf2;
+      --muted: #93a0b4;
+      --accent: #4ade80;
+      --accent-dim: rgba(74, 222, 128, 0.12);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 44px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .badge {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    h1 {
+      font-size: clamp(28px, 4.5vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .subtitle {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 28px;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #07120a;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      padding: 12px 22px;
+      border-radius: 8px;
+      transition: opacity 0.15s ease;
+    }
+    .btn:hover { opacity: 0.9; }
+    .cta-note {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .price-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .price-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .price-amount {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .price-amount span {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+    .price-meta {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--muted);
+      text-align: right;
+    }
+    .price-meta strong { color: var(--accent); font-weight: 600; }
+    section { margin-bottom: 40px; }
+    h2 {
+      font-family: var(--mono);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    tr { border-bottom: 1px solid var(--border); }
+    tr:last-child { border-bottom: none; }
+    th, td {
+      padding: 13px 18px;
+      text-align: left;
+      font-size: 14.5px;
+    }
+    th {
+      width: 30%;
+      color: var(--muted);
+      font-weight: 500;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .steps {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .steps li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 14.5px;
+      display: flex;
+      gap: 12px;
+    }
+    .step-num {
+      font-family: var(--mono);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    footer {
+      margin-top: 56px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    footer a { color: var(--text); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      .price-meta { text-align: left; }
+      th { width: 38%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">Huskly Compute</div>
+      <div class="badge">Launching Jan 2027 · US-West (Seattle, WA)</div>
+    </header>
+
+    <main>
+      <h1>Dedicated 4× NVIDIA RTX PRO 6000 Max-Q Node</h1>
+      <p class="subtitle">
+        Single-tenant bare-metal workstation server with <strong>384 GB ECC VRAM</strong>, full PCIe 5.0 ×16 lanes per GPU, and root SSH access. Rent directly month-to-month without hyperscaler markups or noisy neighbors.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn" href="mailto:felipe@lima.gl?subject=Huskly%20Compute%20%E2%80%94%204x%20RTX%20PRO%206000%20Inquiry">
+          Request a 48-Hour Free Trial
+        </a>
+        <span class="cta-note">Direct email: <a href="mailto:felipe@lima.gl" style="color:var(--text);">felipe@lima.gl</a></span>
+      </div>
+
+      <div class="price-box">
+        <div>
+          <div class="price-label">Dedicated Monthly Lease (100% of Node)</div>
+          <div class="price-amount">$3,000 <span>/ month</span></div>
+        </div>
+        <div class="price-meta">
+          <strong>~$1.03 / GPU-hr</strong> (730 hrs/mo)<br />
+          ~30% below Vast.ai Max-Q median ($1.47/hr)<br />
+          Month-to-month · No egress fees
+        </div>
+      </div>
+
+      <section>
+        <h2>Hardware Specifications</h2>
+        <table>
+          <tr><th>GPUs</th><td>4× NVIDIA RTX PRO 6000 Blackwell Max-Q (96 GB ECC GDDR7 each · <strong>384 GB total VRAM</strong>)</td></tr>
+          <tr><th>Motherboard</th><td>ASUS Pro WS WRX90E-SAGE SE (dedicated PCIe 5.0 ×16 per GPU)</td></tr>
+          <tr><th>CPU</th><td>AMD Ryzen Threadripper PRO 7965WX (24 cores / 48 threads)</td></tr>
+          <tr><th>System RAM</th><td>512 GB DDR5 ECC</td></tr>
+          <tr><th>Storage</th><td>4 TB NVMe SSD (persistent across reboots)</td></tr>
+          <tr><th>Network</th><td>1 Gbps symmetrical · Unmetered</td></tr>
+          <tr><th>Access</th><td>Dedicated bare-metal Linux (Ubuntu) or Docker · Root SSH / Tailscale / WireGuard</td></tr>
+          <tr><th>Location</th><td>Seattle, WA (US-West) · Dedicated 240V circuit</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Ideal Workloads</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Large-Model Inference &amp; Evals</h3>
+            <p>384 GB VRAM fits 70B–400B parameter models cleanly in vLLM or SGLang with generous KV cache headroom.</p>
+          </div>
+          <div class="card">
+            <h3>Fine-Tuning &amp; RL</h3>
+            <p>Multi-GPU LoRA, QLoRA, DPO, and GRPO runs with 512 GB host RAM and fast local NVMe checkpointing.</p>
+          </div>
+          <div class="card">
+            <h3>Dedicated Dev / Batch Box</h3>
+            <p>Persistent datasets, custom CUDA environments, and predictable flat monthly billing with zero cloud egress surprises.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>How It Works</h2>
+        <ol class="steps">
+          <li><span class="step-num">01</span><span><strong>Reserve a trial slot:</strong> Email <a href="mailto:felipe@lima.gl" style="color:var(--text);">felipe@lima.gl</a> with your workload and target start date (go-live: January 2027).</span></li>
+          <li><span class="step-num">02</span><span><strong>Free 48-hour SSH test:</strong> Once online, benchmark your actual models and scripts on the bare-metal box before committing.</span></li>
+          <li><span class="step-num">03</span><span><strong>Simple monthly billing:</strong> Flat month-to-month invoice from Huskly LLC. Direct engineer-to-engineer support—no ticket queues.</span></li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <div>Operated by <strong>Huskly LLC</strong> · Seattle, WA</div>
+      <div><a href="mailto:felipe@lima.gl">felipe@lima.gl</a></div>
+    </footer>
+  </div>
+</body>
+</html>
